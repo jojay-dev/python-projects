@@ -1,36 +1,41 @@
 def show_balance(balance):
-    print(f"Your balance is ${balance:,.2f}")
+    print(f"Balance: ${balance:,.2f}")
 
 def deposit():
-    amount = float(input("How much do you want to deposit? $"))
-    print(f"Amount deposited: ${amount:,.2f}")
-
+    try:
+        amount = float(input("Deposit $"))
+    except ValueError:
+        print("Invalid amount! Please enter a number.")
+        return 0
     if amount < 0:
-        print("That's not a valid amount!")
+        print("Invalid amount!")
         return 0
     else:
+        print(f"Deposited: ${amount:,.2f}")
         return amount
-    
-def withdraw(balance):
-    amount = float(input("Enter amount to withdraw: "))
 
+def withdraw(balance):
+    try:
+        amount = float(input("Withdraw: $"))
+    except ValueError:
+        print("Invalid amount! Please enter a number.")
+        return 0
     if amount > balance:
         print("Insufficient funds")
-        return 0 
+        return 0
     elif amount < 0:
         print("Amount must be greater than 0")
-        return 0 
+        return 0
     else:
+        print(f"Withdrew: ${amount:,.2f}")
         return amount
- 
-def exit():
-    pass
 
+def quit_program():    
+    pass
 
 def main():
     balance = 0
     is_running = True
-
     while is_running:
         print("================================")
         print("Banking Program")
